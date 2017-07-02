@@ -76,7 +76,9 @@ class SQSTopUI  {
                 rowData[i][0] = rowData[i][0].slice(0, 36) + '...';
             }
         }
-        this.table.setData({headers: this.headers,
+        var headers = this.headers.slice();
+        headers[this.sortColumn] = headers[this.sortColumn] + "*"
+        this.table.setData({headers: headers,
                        data: rowData});
         this.screen.render();
     }
