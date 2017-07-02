@@ -32,37 +32,37 @@ class SQSTopUI  {
     
         // Quit on Escape, q, or Control-C.
         this.screen.key(['escape', 'q', 'C-c'], function(ch, key) {
-            this.userQuit = true
+            this.userQuit = true;
             return process.exit(0);
         });
  
         // somewhat vim like top / bottom (not bothering figuring out keypress sequences)
         this.screen.key(['g'], function(ch, key) {
-            this.table.rows.select(0)
-            this.screen.render()
+            this.table.rows.select(0);
+            this.screen.render();
         }.bind(this));
         this.screen.key(['j'], function(ch, key) {
-            this.table.rows.down(1)
-            this.screen.render()
+            this.table.rows.down(1);
+            this.screen.render();
         }.bind(this));
         this.screen.key(['k'], function(ch, key) {
-            this.table.rows.up(1)
-            this.screen.render()
+            this.table.rows.up(1);
+            this.screen.render();
         }.bind(this));
 
         this.sortColumn = 1 
         // change sort column
         this.screen.key(['v'], function(ch, key) {
-            this.sortColumn = 1
-            this.sort_callback()
+            this.sortColumn = 1;
+            this.sort_callback();
         }.bind(this));
         this.screen.key(['i'], function(ch, key) {
-            this.sortColumn = 2
-            this.sort_callback()
+            this.sortColumn = 2;
+            this.sort_callback();
         }.bind(this));
         this.screen.key(['o'], function(ch, key) {
-            this.sortColumn = 3
-            this.sort_callback()
+            this.sortColumn = 3;
+            this.sort_callback();
         }.bind(this));
     
         // Render the screen.
@@ -73,7 +73,7 @@ class SQSTopUI  {
         //truncate any long queue names
         for (var i in rowData) {
             if (rowData[i][0].length > 36) {
-                rowData[i][0] = rowData[i][0].slice(0, 36) + '...'
+                rowData[i][0] = rowData[i][0].slice(0, 36) + '...';
             }
         }
         this.table.setData({headers: this.headers,
