@@ -70,6 +70,12 @@ class SQSTopUI  {
     }
 
     setRows(rowData) {
+        //truncate any long queue names
+        for (var i in rowData) {
+            if (rowData[i][0].length > 36) {
+                rowData[i][0] = rowData[i][0].slice(0, 36) + '...'
+            }
+        }
         this.table.setData({headers: this.headers,
                        data: rowData});
         this.screen.render();
